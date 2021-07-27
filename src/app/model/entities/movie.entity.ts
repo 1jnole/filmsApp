@@ -1,5 +1,5 @@
 import {MovieInterface} from "../interfaces/movie.interface";
-import {GenreEnum} from "../enums/movies/genre.enum";
+import {GenreEnum} from "../enums/movie/genre.enum";
 import {MovieDto} from "../dto/movie.dto";
 
 export class MovieEntity implements MovieInterface {

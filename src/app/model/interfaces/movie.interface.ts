@@ -1,4 +1,4 @@
-import {GenreEnum} from "../enums/movies/genre.enum";
+import {GenreEnum} from "../enums/movie/genre.enum";
 
 export interface MovieInterface {
   id: number;

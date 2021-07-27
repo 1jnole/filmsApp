@@ -1,10 +1,10 @@
-import {APP_INITIALIZER, LOCALE_ID, NgModule} from '@angular/core';
+import {NgModule} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
 import {RouterModule} from "@angular/router";
-import {NgxsModule, Store} from "@ngxs/store";
+import {NgxsModule} from "@ngxs/store";
 import {NgxsLoggerPluginModule} from "@ngxs/logger-plugin";
 import {environment} from "./environments/environment";
 import {NgxsStoragePluginModule} from "@ngxs/storage-plugin";
