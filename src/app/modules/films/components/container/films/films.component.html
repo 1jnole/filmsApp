@@ -1,1 +1,5 @@
-<p>films works!</p>
+<div class="grid lg:grid-cols-2">
+  <ng-container *ngIf="movies$ | async as movies">
+    <app-films-list [movies]="movies"></app-films-list>
+  </ng-container>
+</div>

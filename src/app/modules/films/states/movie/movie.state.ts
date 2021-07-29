@@ -1,5 +1,5 @@
 import {Action, Selector, State, StateContext} from "@ngxs/store";
-import {MovieInterface} from "../../../../model/interfaces/movie.interface";
+import {MovieInterface} from "../../../../model/interfaces/movie/movie.interface";
 import {Injectable} from "@angular/core";
 import {GetMoviesAction} from "../../actions/movies/get-movies.action";
 import {MovieService} from "../../services/movie.service";

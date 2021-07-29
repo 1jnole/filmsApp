@@ -1,6 +1,6 @@
-import {GenreEnum} from "../enums/movie/genre.enum";
+import {GenreEnum} from "../../enums/movie/genre.enum";
 
-export interface MovieDto {
+export interface MovieInterface {
   id: number;
   title: string;
   poster: string;
@@ -10,4 +10,3 @@ export interface MovieDto {
   imdbRating: number;
   actors: number[];
 }
-

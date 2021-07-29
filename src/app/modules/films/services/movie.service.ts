@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {MovieInterface} from "../../../model/interfaces/movie.interface";
-import {MovieDto} from "../../../model/dto/movie.dto";
+import {MovieInterface} from "../../../model/interfaces/movie/movie.interface";
+import {MovieDto} from "../../../model/dto/movie/movie.dto";
 import {map} from "rxjs/operators";
-import {MovieEntity} from "../../../model/entities/movie.entity";
+import {MovieEntity} from "../../../model/entities/movie/movie.entity";
 
 @Injectable({
   providedIn: 'root'

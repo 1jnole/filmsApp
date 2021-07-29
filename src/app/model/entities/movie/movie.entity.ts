@@ -1,6 +1,7 @@
-import {MovieInterface} from "../interfaces/movie.interface";
-import {GenreEnum} from "../enums/movie/genre.enum";
-import {MovieDto} from "../dto/movie.dto";
+import {MovieInterface} from "../../interfaces/movie/movie.interface";
+import {GenreEnum} from "../../enums/movie/genre.enum";
+import {MovieDto} from "../../dto/movie/movie.dto";
+
 
 export class MovieEntity implements MovieInterface {
   id: number;

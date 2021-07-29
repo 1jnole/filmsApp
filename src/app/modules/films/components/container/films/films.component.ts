@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Observable} from "rxjs";
-import {MovieInterface} from "../../../../../model/interfaces/movie.interface";
+import {MovieInterface} from "../../../../../model/interfaces/movie/movie.interface";
 import {Select, Store} from "@ngxs/store";
 import {MovieState} from "../../../states/movie/movie.state";
 import {GetMoviesAction} from "../../../actions/movies/get-movies.action";
