@@ -20,8 +20,4 @@ export class MovieListComponent implements OnInit {
       return movie.id;
   }
 
-  trackByGenreFn(index: number):number {
-      return index;
-  }
-
 }
