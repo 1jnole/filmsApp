@@ -9,6 +9,9 @@ import {MovieInterface} from "../../../../../../../model/interfaces/movie/movie.
 export class CardMovieComponent implements OnInit {
 
   @Input() movie!: MovieInterface;
+  @Input() lastItem: boolean = false;
+
+  showModal = false;
 
   constructor() { }
 
@@ -16,6 +19,9 @@ export class CardMovieComponent implements OnInit {
     return index;
   }
 
+  toggleModal(){
+    this.showModal = !this.showModal;
+  }
 
   ngOnInit(): void {
   }

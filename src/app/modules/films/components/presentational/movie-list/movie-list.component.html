@@ -1,5 +1,7 @@
 <div class="grid grid-cols-3 p-8 gap-8 sm:grid-cols-1 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-3">
-  <app-card-movie *ngFor="let movie of movies; trackBy: trackByFn; let last = last"
+  <app-card-movie *ngFor="let movie of movies; trackBy: trackByFn; let lastItem = last"
+                  [lastItem]="lastItem"
                   [movie]="movie">
   </app-card-movie>
+
 </div>
