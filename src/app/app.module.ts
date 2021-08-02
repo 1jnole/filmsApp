@@ -6,7 +6,6 @@ import {FormsModule} from "@angular/forms";
 import {RouterModule} from "@angular/router";
 import {NgxsModule} from "@ngxs/store";
 import {NgxsLoggerPluginModule} from "@ngxs/logger-plugin";
-import {environment} from "./environments/environment";
 import {NgxsStoragePluginModule} from "@ngxs/storage-plugin";
 import {HeaderModule} from "./modules/header/header.module";
 import {AppComponent} from "./components/app/app.component";
@@ -30,7 +29,7 @@ import {AppRoutingModule} from "./app-routing.module";
       }
     ),
     NgxsLoggerPluginModule.forRoot({
-      disabled: environment.production
+      disabled: false
     }),
     [NgxsModule.forRoot([]), NgxsStoragePluginModule.forRoot()],
     HeaderModule,

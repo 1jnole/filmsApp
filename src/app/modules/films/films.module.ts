@@ -6,12 +6,11 @@ import {FilmsRoutingModule} from "./films-routing.module";
 import {NgxsModule} from "@ngxs/store";
 import {MovieState} from "./states/movie/movie.state";
 import {MovieListComponent} from "./components/presentational/movie-list/movie-list.component";
-import { MovieEditorComponent } from './components/presentational/movie-editor/movie-editor.component';
-import { CardMovieComponent } from './components/presentational/movie-list/components/card-movie/card-movie.component';
+import { MovieModalEditorComponent } from './components/presentational/movie-list/components/movie-modal-editor/movie-modal-editor.component';
 
 
 @NgModule({
-  declarations: [FilmsComponent, MovieListComponent, MovieEditorComponent, CardMovieComponent],
+  declarations: [FilmsComponent, MovieListComponent, MovieModalEditorComponent],
   imports: [
     FilmsRoutingModule,
     CommonModule,

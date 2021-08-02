@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {MovieInterface} from "../../../../../model/interfaces/movie/movie.interface";
 
 @Component({
@@ -9,15 +9,32 @@ import {MovieInterface} from "../../../../../model/interfaces/movie/movie.interf
 export class MovieListComponent implements OnInit {
 
   @Input() movies: MovieInterface[] = [];
+  @Input() hasModalOpen: boolean = false;
 
-  constructor() { }
+  @Output() openAddMovieModal = new EventEmitter<void>();
+  @Output() closeAddMovieModal = new EventEmitter<void>();
+
+  constructor() {
+  }
 
   ngOnInit(): void {
     console.log(this.movies);
   }
 
-  trackByFn(index: number, movie: MovieInterface):number {
-      return movie.id;
+  trackByFn(index: number, movie: MovieInterface): number {
+    return movie.id;
+  }
+
+  trackByGenreFn(index: number): number {
+    return index;
+  }
+
+  openModal() {
+    this.openAddMovieModal.emit();
+  }
+
+  closeModal(){
+    this.closeAddMovieModal.emit();
   }
 
 }
