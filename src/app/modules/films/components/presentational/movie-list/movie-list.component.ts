@@ -14,8 +14,7 @@ export class MovieListComponent implements OnInit {
   @Output() openAddMovieModal = new EventEmitter<void>();
   @Output() closeAddMovieModal = new EventEmitter<void>();
 
-  constructor() {
-  }
+  constructor() {}
 
   ngOnInit(): void {
     console.log(this.movies);

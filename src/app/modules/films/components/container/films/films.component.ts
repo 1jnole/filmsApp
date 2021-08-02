@@ -14,7 +14,8 @@ import {CloseMovieModalAction} from "../../../actions/modal/close-movie-modal.ac
 })
 export class FilmsComponent implements OnInit {
 
-  constructor(private store: Store) { }
+
+  constructor(private store: Store) {}
 
   @Select(MovieState.getMoviesState) movies$!: Observable<MovieInterface[]>
   @Select(MovieState.getModalState) hasModalOpen!: Observable<MovieInterface[]>
