@@ -1,5 +1,4 @@
 import {MovieInterface} from '../../interfaces/movie/movie.interface';
-import {GenreEnum} from '../../enums/movie/genre.enum';
 import {MovieDto} from '../../dto/movie/movie.dto';
 
 
@@ -7,16 +6,16 @@ export class MovieEntity implements MovieInterface {
   id: number;
   title: string;
   poster: string;
-  genre: GenreEnum[];
+  genres: string[];
   year: number;
   duration: number;
   imdbRating: number;
   actors: number[];
 
-  constructor({id, duration, genre, imdbRating, poster, title, year, actors}: MovieInterface) {
+  constructor({id, duration, genres, imdbRating, poster, title, year, actors}: MovieInterface) {
     this.id = id;
     this.duration = duration;
-    this.genre = genre;
+    this.genres = genres;
     this.imdbRating = imdbRating;
     this.poster = poster;
     this.title = title;
@@ -24,11 +23,11 @@ export class MovieEntity implements MovieInterface {
     this.actors = actors;
   }
 
-  static fromMovieDTO({id, duration, genre, imdbRating, poster, title, year, actors}: MovieDto) {
+  static fromMovieDTO({id, duration, genres, imdbRating, poster, title, year, actors}: MovieDto) {
     return new MovieEntity({
       id,
       duration,
-      genre,
+      genres,
       imdbRating,
       poster,
       title,

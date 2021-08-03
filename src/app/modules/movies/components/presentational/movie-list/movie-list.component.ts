@@ -1,12 +1,12 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {MovieInterface} from "../../../../../model/interfaces/movie/movie.interface";
+import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {MovieInterface} from '../../../../../model/interfaces/movie/movie.interface';
 
 @Component({
   selector: 'app-films-list',
   templateUrl: './movie-list.component.html',
   styleUrls: ['./movie-list.component.scss']
 })
-export class MovieListComponent implements OnInit {
+export class MovieListComponent {
 
   @Input() movies: MovieInterface[] = [];
   @Input() hasModalOpen: boolean = false;
@@ -14,10 +14,7 @@ export class MovieListComponent implements OnInit {
   @Output() openAddMovieModal = new EventEmitter<void>();
   @Output() closeAddMovieModal = new EventEmitter<void>();
 
-  constructor() {}
-
-  ngOnInit(): void {
-    console.log(this.movies);
+  constructor() {
   }
 
   trackByFn(index: number, movie: MovieInterface): number {
@@ -32,7 +29,7 @@ export class MovieListComponent implements OnInit {
     this.openAddMovieModal.emit();
   }
 
-  closeModal(){
+  closeModal() {
     this.closeAddMovieModal.emit();
   }
 
