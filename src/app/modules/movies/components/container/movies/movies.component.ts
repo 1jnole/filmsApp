@@ -8,11 +8,11 @@ import {OpenMovieModalAction} from "../../../actions/modal/open-movie-modal.acti
 import {CloseMovieModalAction} from "../../../actions/modal/close-movie-modal.action";
 
 @Component({
-  selector: 'app-films',
-  templateUrl: './films.component.html',
-  styleUrls: ['./films.component.scss']
+  selector: 'app-movies',
+  templateUrl: './movies.html',
+  styleUrls: ['./movies.component.scss']
 })
-export class FilmsComponent implements OnInit {
+export class MoviesComponent implements OnInit {
 
 
   constructor(private store: Store) {}

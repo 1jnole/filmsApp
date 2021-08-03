@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
+import {Observable, of} from "rxjs";
 import {MovieInterface} from "../../../model/interfaces/movie/movie.interface";
 import {MovieDto} from "../../../model/dto/movie/movie.dto";
 import {map} from "rxjs/operators";

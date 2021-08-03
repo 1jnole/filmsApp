@@ -1,15 +1,43 @@
-<nav class="flex items-center justify-between flex-wrap bg-teal p-6">
-  <div class="flex items-center flex-no-shrink text-black mr-6">
-     <app-logos></app-logos>
-  </div>
-  <div class="block lg:hidden">
-    <button class="flex items-center px-3 py-2 border rounded text-teal-lighter border-teal-light hover:text-white hover:border-white">
-      <svg class="h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
-    </button>
-  </div>
-  <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
-    <div class="text-sm lg:flex-grow">
-      <app-links></app-links>
+<nav class="relative flex flex-wrap items-center justify-between px-2 py-3 bg-indigo-500 mb-3">
+  <div class="container px-4 mx-auto flex flex-wrap items-center justify-between">
+    <div class="w-full relative flex justify-between lg:w-auto  px-4 lg:static lg:block lg:justify-start">
+      <h3 class="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-white">
+        Movies
+      </h3>
+      <button
+        class="text-white cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
+        type="button" (click)="toggleNavbar()">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+    <div [ngClass]="{'hidden': !showMenu, 'flex': showMenu}" class="lg:flex lg:flex-grow items-center">
+      <ul class="flex flex-col lg:flex-row list-none ml-auto">
+        <li class="nav-item">
+          <a [routerLink]="['movie']" [routerLinkActive]="['active']"
+             class="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
+             href="#">
+            <i class="fab fa-facebook-square text-lg leading-lg text-white opacity-75"></i><span class="ml-2">Movies</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a [routerLink]="['actors']" [routerLinkActive]="['active']"
+             class="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
+             href="#">
+            <i class="fab fa-twitter text-lg leading-lg text-white opacity-75"></i><span class="ml-2">Actors</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a [routerLink]="['companies']" [routerLinkActive]="['active']"
+             class="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
+             href="#">
+            <i class="fab fa-pinterest text-lg leading-lg text-white opacity-75"></i><span class="ml-2">Companies</span>
+          </a>
+        </li>
+      </ul>
     </div>
   </div>
 </nav>

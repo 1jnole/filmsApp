@@ -5,7 +5,7 @@ const routes: Routes = [
   {path: '', redirectTo: 'movie', pathMatch: 'full'},
   {
     path: 'movie',
-    loadChildren: () => import('./modules/films/films.module').then(m => m.FilmsModule)
+    loadChildren: () => import('./modules/movies/films.module').then(m => m.FilmsModule)
   },
   {path: '**', redirectTo: 'movie', pathMatch: 'full'}
 ];
