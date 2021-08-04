@@ -42,7 +42,6 @@ export class MovieState {
     return state.movies
   }
 
-
   @Selector()
   public static getNewMovieState(state: MovieStateModel) {
     return state.newMovie

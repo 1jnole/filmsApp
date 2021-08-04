@@ -1,35 +1,28 @@
-<ng-container *ngIf="!isLoadingMovies; else pageLoader">
-  <div class="grid grid-cols-1 p-8 gap-8 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-3">
-    <ng-container *ngFor="let movie of movies; trackBy: trackByFn; let lastItem = last">
-      <div class="rounded-xl shadow-xl">
-        <h2 class="text-xl font-bold truncate mt-1 m-2">{{movie.title}}</h2>
-        <ng-container *ngIf="movie?.poster; else noImage">
-          <img alt="No Image" class="rounded-t-xl  w-full h-36 object-cover" [src]="movie.poster">
-        </ng-container>
-        <div class="flex flex-col p-7">
-          <div class="flex flex-row">
-            <div *ngFor="let item of movie?.genre trackBy: trackByGenreFn; index as i"
-                 class="text-xs bg-yellow-100 p-1 px-2 mr-2 text-yellow-700 rounded-2xl"># {{item}}</div>
-          </div>
-        </div>
-        <div class="flex justify-end">
-          <a *ngIf="lastItem" [routerLink]="['add-new-movie']">
-            +
-          </a>
+<div class="grid grid-cols-1 p-8 gap-8 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-3">
+  <ng-container *ngFor="let movie of movies; trackBy: trackByFn; let lastItem = last">
+    <div class="rounded-xl shadow-xl">
+      <h2 class="text-xl font-bold truncate mt-1 m-2">{{movie.title}}</h2>
+      <ng-container *ngIf="movie?.poster; else noImage">
+        <img alt="No Image" class="rounded-t-xl  w-full h-36 object-cover" [src]="movie.poster">
+      </ng-container>
+      <div class="flex flex-col p-7">
+        <div class="flex flex-row">
+          <div *ngFor="let item of movie?.genre trackBy: trackByGenreFn; index as i"
+               class="text-xs bg-yellow-100 p-1 px-2 mr-2 text-yellow-700 rounded-2xl"># {{item}}</div>
         </div>
       </div>
-    </ng-container>
-  </div>
-</ng-container>
+      <div class="flex justify-end">
+        <a *ngIf="lastItem" [routerLink]="['add-new-movie']">
+          +
+        </a>
+      </div>
+    </div>
+  </ng-container>
+</div>
 
 
 <ng-template #noImage>
-  <img
-    class="rounded-t-xl  w-full h-36 object-cover"
-    src="https://www.agora-gallery.com/advice/wp-content/uploads/2015/10/image-placeholder.png" alt="movie"/>
+  <img class="rounded-t-xl w-full h-36 object-cover"
+       src="https://www.agora-gallery.com/advice/wp-content/uploads/2015/10/image-placeholder.png" alt="movie"/>
 </ng-template>
 
-
-<ng-template #pageLoader>
-  <app-spinner></app-spinner>
-</ng-template>

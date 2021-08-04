@@ -1,6 +1,5 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Input} from '@angular/core';
 import {MovieInterface} from '../../../../../model/interfaces/movie/movie.interface';
-
 
 @Component({
   selector: 'app-films-list',
@@ -10,8 +9,6 @@ import {MovieInterface} from '../../../../../model/interfaces/movie/movie.interf
 export class MovieListComponent {
 
   @Input() movies: MovieInterface[] = [];
-  @Input() isLoadingMovies!: boolean;
-
 
   trackByFn(index: number, movie: MovieInterface): number {
     return movie.id;
