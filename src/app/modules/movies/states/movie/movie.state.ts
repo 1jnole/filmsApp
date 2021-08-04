@@ -2,43 +2,54 @@ import {Action, Selector, State, StateContext} from "@ngxs/store";
 import {MovieInterface} from "../../../../model/interfaces/movie/movie.interface";
 import {Injectable} from "@angular/core";
 import {GetMoviesAction} from "../../actions/movies/get-movies.action";
-
 import {tap} from "rxjs/operators";
-import {OpenMovieModalAction} from "../../actions/modal/open-movie-modal.action";
-import {CloseMovieModalAction} from "../../actions/modal/close-movie-modal.action";
-import {MovieModalService} from "../../services/movie-modal.service";
 import {MovieService} from "../../services/movie.service";
+
+import {MovieEntity} from "../../../../model/entities/movie/movie.entity";
+import {AddNewMovieAction} from "../../actions/movies/add-new-movie.action";
 
 
 export interface MovieStateModel {
   movies: MovieInterface[];
-  hasModalOpen: boolean;
+  newMovie: MovieInterface;
 }
 
 @State<MovieStateModel>({
   name: 'movies',
   defaults: {
     movies: [],
-    hasModalOpen: false,
+    newMovie: new MovieEntity({
+      actors: [],
+      duration: 0,
+      genre: [],
+      id: 0,
+      imdbRating: 0,
+      poster: "",
+      title: "",
+      year: 0
+    })
   }
 })
-@Injectable()
-export class MovieState{
 
-  constructor( private movieService: MovieService, private movieModalService: MovieModalService) {}
+@Injectable()
+export class MovieState {
+
+  constructor(private movieService: MovieService) {
+  }
 
   @Selector()
-  public static getMoviesState(state: MovieStateModel){
+  public static getMoviesState(state: MovieStateModel) {
     return state.movies
   }
 
+
   @Selector()
-  public static getModalState(state: MovieStateModel){
-    return state.hasModalOpen
+  public static getNewMovieState(state: MovieStateModel) {
+    return state.newMovie
   }
 
   @Action(GetMoviesAction)
-  getMovies({patchState}: StateContext<MovieStateModel>){
+  getMovies({patchState}: StateContext<MovieStateModel>) {
     return this.movieService.getMovies().pipe(tap((movies) => {
       patchState({
         movies
@@ -46,23 +57,13 @@ export class MovieState{
     }));
   }
 
-  @Action(OpenMovieModalAction)
-  openMovieModal({patchState}: StateContext<MovieStateModel>) {
-    return this.movieModalService.openMovieModal().pipe(tap((res ) =>  {
-      patchState({
-        hasModalOpen: res
-      });
-    }));
+  @Action(AddNewMovieAction)
+  addNewMovieAction({patchState}: StateContext<MovieStateModel>, {movie}: AddNewMovieAction) {
+    return this.movieService.addNewMovie(movie).pipe(tap((movie) => {
+      patchState({newMovie: movie});
+    }))
   }
 
-  @Action(CloseMovieModalAction)
-  closeMovieModal({patchState}: StateContext<MovieStateModel>) {
-    return this.movieModalService.closeMovieModal().pipe(tap((res ) =>  {
-      patchState({
-        hasModalOpen: res
-      });
-    }));
-  }
 }
 
 

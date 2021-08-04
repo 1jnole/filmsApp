@@ -1,10 +1,7 @@
-<div>
-  <ng-container *ngIf="movies$ | async as movies">
-    <app-films-list
-      [movies]="movies"
-      [hasModalOpen]="!!(hasModalOpen | async)"
-      (openAddMovieModal)="openModal()"
-      (closeAddMovieModal)="closeModal()">
-    </app-films-list>
+ <ng-container *ngIf="movies$ | async as movies">
+      <app-films-list
+        [isLoadingMovies]="!!(isLoadingMovies$ | async)"
+        [movies]="movies">
+      </app-films-list>
   </ng-container>
-</div>
+

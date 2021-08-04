@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {MovieInterface} from '../../../../../model/interfaces/movie/movie.interface';
 
+
 @Component({
   selector: 'app-films-list',
   templateUrl: './movie-list.component.html',
@@ -9,13 +10,8 @@ import {MovieInterface} from '../../../../../model/interfaces/movie/movie.interf
 export class MovieListComponent {
 
   @Input() movies: MovieInterface[] = [];
-  @Input() hasModalOpen: boolean = false;
+  @Input() isLoadingMovies!: boolean;
 
-  @Output() openAddMovieModal = new EventEmitter<void>();
-  @Output() closeAddMovieModal = new EventEmitter<void>();
-
-  constructor() {
-  }
 
   trackByFn(index: number, movie: MovieInterface): number {
     return movie.id;
@@ -25,12 +21,5 @@ export class MovieListComponent {
     return index;
   }
 
-  openModal() {
-    this.openAddMovieModal.emit();
-  }
-
-  closeModal() {
-    this.closeAddMovieModal.emit();
-  }
 
 }

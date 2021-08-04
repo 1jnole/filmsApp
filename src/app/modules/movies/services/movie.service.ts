@@ -13,11 +13,26 @@ export class MovieService {
 
   constructor(private http: HttpClient) { }
 
+  context = 'http://localhost:3000';
+
   getMovies(): Observable<MovieInterface[]> {
-    return this.http.get<MovieDto[]>('http://localhost:3000/movies')
+    return this.http.get<MovieDto[]>(`${this.context}/movies`)
       .pipe(map((movie) => {
         return movie.map((item) => MovieEntity.fromMovieDTO(item));
       })
     )
+  }
+
+  getMovieById(id: number): Observable<MovieInterface> {
+    return this.http.get<MovieDto>(`${this.context}/movies/${id}`).pipe(map((movie) => {
+      return MovieEntity.fromMovieDTO(movie)
+    }));
+  }
+
+  addNewMovie(movie: MovieInterface): Observable<MovieInterface>{
+    return this.http.post<MovieInterface>(`${this.context}/movies`, MovieEntity.toMovieDTO(movie)).pipe((map((movie) => {
+      return MovieEntity.fromMovieDTO(movie)
+    })))
+
   }
 }

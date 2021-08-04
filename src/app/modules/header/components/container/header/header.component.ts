@@ -5,16 +5,9 @@ import {Component, OnInit} from '@angular/core';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
-
-  constructor() {
-  }
-
-  ngOnInit(): void {
-  }
+export class HeaderComponent {
 
   showMenu = false;
-
   toggleNavbar() {
     this.showMenu = !this.showMenu;
   }

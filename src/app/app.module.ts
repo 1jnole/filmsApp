@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import {BrowserModule} from '@angular/platform-browser';
 
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
@@ -11,6 +11,7 @@ import {HeaderModule} from "./modules/header/header.module";
 import {AppComponent} from "./components/app/app.component";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {AppRoutingModule} from "./app-routing.module";
+import {SpinnerComponent} from './modules/utils/components/spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -31,10 +32,11 @@ import {AppRoutingModule} from "./app-routing.module";
     NgxsLoggerPluginModule.forRoot({
       disabled: false
     }),
-    [NgxsModule.forRoot([]), NgxsStoragePluginModule.forRoot()],
-    HeaderModule,
+    NgxsStoragePluginModule.forRoot(),
+    HeaderModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
