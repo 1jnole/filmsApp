@@ -1,112 +1,100 @@
-<div class="relative p-8 flex-auto">
-  <form [formGroup]="form" class="p-0 mb-4 bg-white rounded" (submit)="submitForm()">
-    <div class="mb-4 md:flex">
-      <div class="mb-4 md:mr-2 md:mb-0">
-        <label class="block mb-2 text-sm font-bold text-gray-700" for="title">
-          Title
-        </label>
-        <input
-          formControlName="title"
-          class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded appearance-none focus:outline-none focus:shadow-outline"
-          id="title"
-          type="text"
-          placeholder="Title"
-        />
+<div class="flex h-screen items-center justify-center mt-32 mb-32">
+  <div class="grid bg-white rounded-lg shadow-xl w-11/12 md:w-9/12 lg:w-1/2">
+    <div class="flex justify-center py-4">
+      <div class="flex bg-purple-200 rounded-full md:p-4 p-2 border-2 border-purple-300">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z"/>
+        </svg>
+      </div>
+    </div>
+    <div class="flex justify-center">
+      <div class="flex">
+        <h1 class="text-gray-600 font-bold md:text-2xl text-xl">Add movie</h1>
       </div>
     </div>
 
-    <div class="mb-4 md:flex">
-      <div class="mb-4 md:mr-2 md:mb-0">
-        <label class="block mb-2 text-sm font-bold text-gray-700" for="poster">
-          Poster (url)
-        </label>
-        <input
-          formControlName="poster"
-          class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded  appearance-none focus:outline-none focus:shadow-outline"
-          id="poster"
-          type="text"
-          placeholder="Poster"
-        />
-      </div>
-    </div>
-
-    <div class="mb-5">
-      <div class="mb-4 md:mr-2 md:mb-0">
-        <app-genre-chips formControlName="genre"></app-genre-chips>
-      </div>
-      <!--  <div class="md:ml-2">
-          <label class="block mb-2 text-sm font-bold text-gray-700" for="actors">
-            Actors
-          </label>
-          <input
-            class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded  appearance-none focus:outline-none focus:shadow-outline"
-            id="actors"
-            type="text"
-            placeholder="Actors"
-          />
+    <ng-container *ngIf="!isAddingMovie; else pageLoader">
+      <form [formGroup]="form" (ngSubmit)="submitForm()">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 mt-5 mx-7">
+          <div class="grid grid-cols-1">
+            <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Title</label>
+            <input formControlName="title"
+                   class="py-2 px-3 rounded-lg border-2 border-purple-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                   type="text" placeholder="Title"/>
+          </div>
         </div>
-        <div class="md:ml-2">
-          <label class="block mb-2 text-sm font-bold text-gray-700" for="company">
-            company
-          </label>
+
+        <div class="grid grid-cols-1 mt-5 mx-7">
+          <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Poster</label>
+          <input formControlName="poster"
+                 class="py-2 px-3 rounded-lg border-2 border-purple-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                 type="text" placeholder="Poster"/>
+        </div>
+
+        <app-genre-chips formControlName="genre"></app-genre-chips>
+
+        <div class="grid grid-cols-1 mt-5 mx-7">
+          <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Actors</label>
+          <select
+            formControlName="actors"
+            class="py-2 px-3 rounded-lg border-2 border-purple-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent">
+            <option>Option 1</option>
+            <option>Option 2</option>
+            <option>Option 3</option>
+          </select>
+        </div>
+
+
+        <div class="grid grid-cols-1 mt-5 mx-7">
+          <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Companies</label>
+          <select
+            formControlName="companies"
+            class="py-2 px-3 rounded-lg border-2 border-purple-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent">
+            <option>Option 1</option>
+            <option>Option 2</option>
+            <option>Option 3</option>
+          </select>
+        </div>
+
+
+        <div class="grid grid-cols-1 mt-5 mx-7">
+          <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Years</label>
           <input
-            class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded  appearance-none focus:outline-none focus:shadow-outline"
-            id="company"
-            type="text"
-            placeholder="company"
-          />
-        </div> -->
-    </div>
-    <div class="mb-5 md:flex md:justify-between">
-      <div class="mb-4 md:mr-2 md:mb-0">
-        <label class="block mb-2 text-sm font-bold text-gray-700" for="title">
-          Year
-        </label>
-        <input
-          formControlName="year"
-          class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded  appearance-none focus:outline-none focus:shadow-outline"
-          id="year"
-          type="text"
-          placeholder="Year"
-        />
-      </div>
-      <div class="md:ml-2">
-        <label class="block mb-2 text-sm font-bold text-gray-700" for="duration">
-          Duration
-        </label>
-        <input
-          formControlName="duration"
-          class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded  appearance-none focus:outline-none focus:shadow-outline"
-          id="duration"
-          type="text"
-          placeholder="Duration"
-        />
-      </div>
-      <div class="md:ml-2">
-        <label class="block mb-2 text-sm font-bold text-gray-700" for="rate">
-          Ratio
-        </label>
-        <input
-          formControlName="imdbRating"
-          class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded  appearance-none focus:outline-none focus:shadow-outline"
-          id="rate"
-          type="text"
-          placeholder="Ratio"
-        />
-      </div>
-    </div>
-  </form>
+            class="py-2 px-3 rounded-lg border-2 border-purple-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+            type="number" placeholder="Years"/>
+        </div>
 
+        <div class="grid grid-cols-1 mt-5 mx-7">
+          <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Duration</label>
+          <input
+            class="py-2 px-3 rounded-lg border-2 border-purple-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+            type="number" placeholder="Another Input"/>
+        </div>
+
+        <div class="grid grid-cols-1 mt-5 mx-7">
+          <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Rating</label>
+          <input
+            type="number"
+            class="py-2 px-3 rounded-lg border-2 border-purple-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+            placeholder="Rating"/>
+        </div>
+
+        <div class='flex items-center justify-center  md:gap-8 gap-4 pt-5 pb-5'>
+          <button class='w-auto bg-gray-500 hover:bg-gray-700 rounded-lg shadow-xl font-medium text-white px-4 py-2'>
+            Cancel
+          </button>
+          <button type="submit"
+                  class='w-auto bg-purple-500 hover:bg-purple-700 rounded-lg shadow-xl font-medium text-white px-4 py-2'>
+            Create
+          </button>
+        </div>
+      </form>
+    </ng-container>
+  </div>
 </div>
 
 
-<div class="footer">
-  <button
-    (click)="submitForm()"
-    class="bg-emerald-500 text-blue-700 active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded  hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-    type="button">
-    Save
-  </button>
-</div>
-
-
+<ng-template #pageLoader>
+  <app-spinner></app-spinner>
+</ng-template>

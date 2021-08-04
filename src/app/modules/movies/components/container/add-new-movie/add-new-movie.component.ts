@@ -6,6 +6,8 @@ import {MovieState} from "../../../states/movie/movie.state";
 import {Observable} from "rxjs";
 import {MovieInterface} from "../../../../../model/interfaces/movie/movie.interface";
 import {ActivatedRoute, Router} from "@angular/router";
+import {hasActionsExecuting} from "@ngxs-labs/actions-executing";
+import {GetMoviesAction} from "../../../actions/movies/get-movies.action";
 
 @Component({
   selector: 'app-add-new-movie',
@@ -15,9 +17,9 @@ import {ActivatedRoute, Router} from "@angular/router";
 export class AddNewMovieComponent implements OnInit {
 
   @Select(MovieState.getNewMovieState) newMovie$!: Observable<MovieInterface>
+  @Select(hasActionsExecuting([AddNewMovieAction])) isAddingMovie$!: Observable<boolean>
 
-  constructor(private store: Store, private router: Router, private activatedRoute: ActivatedRoute) {
-  }
+  constructor(private store: Store, private router: Router, private activatedRoute: ActivatedRoute) {}
 
   ngOnInit(): void {
 

@@ -10,7 +10,7 @@ import {MovieEntity} from "../../../../../model/entities/movie/movie.entity";
 })
 export class MovieFormComponent implements OnInit, OnChanges {
 
-  /* @Input() newMovie!: MovieEntity;*/
+  @Input() isAddingMovie!: boolean;
   @Output() setNewMovie = new EventEmitter<MovieEntity>();
 
   form: FormGroup;
@@ -29,7 +29,7 @@ export class MovieFormComponent implements OnInit, OnChanges {
   }
 
   close() {
- //   this.closeAddMovieModal.emit();
+    //   this.closeAddMovieModal.emit();
   }
 
   submitForm() {
