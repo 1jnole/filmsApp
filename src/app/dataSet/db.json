@@ -19,25 +19,6 @@
       ]
     },
     {
-      "movie": {
-        "id": 2,
-        "duration": 189,
-        "genre": [
-          "Horror",
-          "Thriller"
-        ],
-        "imdbRating": 1.99,
-        "poster": "http://dummyimage.com/400x600.png/dddddd/000000",
-        "title": "Mooring, The",
-        "year": 1987,
-        "actors": [
-          5,
-          6
-        ]
-      },
-      "id": 2
-    },
-    {
       "id": 3,
       "title": "Black Rain (Kuroi ame)",
       "poster": "http://dummyimage.com/400x600.png/5fa2dd/ffffff",
@@ -70,27 +51,6 @@
         9,
         10
       ]
-    },
-    {
-      "movie": {
-        "id": 5,
-        "duration": 99,
-        "genre": [
-          "Comedy",
-          "Crime",
-          "Drama"
-        ],
-        "imdbRating": 5.99,
-        "poster": "http://dummyimage.com/400x600.png/ff4444/ffffff",
-        "title": "Eulogya",
-        "year": 1999,
-        "actors": [
-          6,
-          7,
-          8
-        ]
-      },
-      "id": 5
     },
     {
       "id": 6,
@@ -131,21 +91,22 @@
     },
     {
       "id": 8,
-      "duration": 121,
+      "duration": 19,
       "genre": [
         "Action",
         "Drama",
         "Sci-Fi"
       ],
-      "imdbRating": 5.36,
-      "poster": null,
+      "imdbRating": 5.3,
+      "poster": "https://www.agora-gallery.com/advice/wp-content/uploads/2015/10/image-placeholder.png",
       "title": "Godzilla vs. Mechagodzilla II (Gojira VS Mekagojira)",
-      "year": 1993,
+      "year": 1994,
       "actors": [
         3,
         4,
         5
-      ]
+      ],
+      "company": ""
     },
     {
       "id": 9,
@@ -176,90 +137,6 @@
         9,
         11
       ]
-    },
-    {
-      "id": 16846,
-      "duration": 78,
-      "genre": [
-        1,
-        2,
-        3,
-        4
-      ],
-      "imdbRating": 920,
-      "poster": "3",
-      "title": "pepe",
-      "year": "56",
-      "actors": "34"
-    },
-    {
-      "id": 85986,
-      "duration": 78,
-      "genre": [
-        1,
-        2,
-        3,
-        4
-      ],
-      "imdbRating": 920,
-      "poster": "3",
-      "title": "pepe",
-      "year": "56",
-      "actors": "34"
-    },
-    {
-      "id": 15359,
-      "duration": 78,
-      "genre": [
-        1,
-        2,
-        3,
-        4
-      ],
-      "imdbRating": 920,
-      "poster": "3",
-      "title": "pepe",
-      "year": "56",
-      "actors": "34"
-    },
-    {
-      "id": 21286,
-      "duration": 78,
-      "genre": [
-        1,
-        2,
-        3,
-        4
-      ],
-      "imdbRating": 920,
-      "poster": "3",
-      "title": "pepitona",
-      "year": "56",
-      "actors": "34"
-    },
-    {
-      "id": 25534,
-      "duration": 43,
-      "genre": [
-        "erw",
-        "we",
-        "wer"
-      ],
-      "imdbRating": 34,
-      "poster": "erw",
-      "title": "Torrent 3",
-      "year": 43,
-      "actors": "Option 2"
-    },
-    {
-      "id": 75013,
-      "duration": 43,
-      "genre": [],
-      "imdbRating": 43,
-      "poster": "",
-      "title": "panteriña",
-      "year": 3,
-      "actors": ""
     },
     {
       "id": 894,
@@ -336,7 +213,7 @@
       "duration": 234,
       "genre": [],
       "imdbRating": 34,
-      "poster": "ee",
+      "poster": "",
       "title": "Carros de fuego",
       "year": 190,
       "actors": ""

@@ -5,12 +5,12 @@
            [src]="movie?.poster ? movie.poster : 'https://www.agora-gallery.com/advice/wp-content/uploads/2015/10/image-placeholder.png'">
       <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
         <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">{{movie.title}}</h1>
-        <div class="flex mt-6 justify-between pb-5 border-b-2 border-gray-200 mb-5">
-          <div class="flex">
+        <div *ngIf="movie?.imdbRating || movie?.duration" class="flex mt-6 justify-between pb-5 border-b-2 border-gray-200 mb-5">
+          <div *ngIf="movie.imdbRating" class="flex">
             <span class="mr-1">{{"movie.form.rating" |translate}}</span>
             <span class="font-semibold">{{movie.imdbRating}}</span>
           </div>
-          <div class="flex ml-6 items-center">
+          <div *ngIf="movie.duration" class="flex ml-6 items-center">
             <span class="mr-1">{{"movie.form.duration" |translate}}</span>
             <div class="relative">
               <span class="font-semibold">{{movie.duration}}</span>
@@ -26,7 +26,7 @@
         </div>
 
 
-        <div class="flex mt-6 justify-start pb-5 border-b-2 border-gray-200 mb-5">
+        <div *ngIf="movie.company" class="flex mt-6 justify-start pb-5 border-b-2 border-gray-200 mb-5">
           <div class="flex">
             <span class="mr-1">{{"header.links.companies" |translate}}</span>
             <span class="font-semibold">{{movie.company}}</span>
@@ -56,3 +56,5 @@
     </div>
   </div>
 </section>
+
+

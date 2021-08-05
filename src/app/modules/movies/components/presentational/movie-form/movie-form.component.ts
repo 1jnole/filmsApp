@@ -23,11 +23,12 @@ export class MovieFormComponent implements OnInit {
 
   form: FormGroup;
   companies: StudioInterface[];
+  regex = /^((https?|ftp|smtp):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/;
 
   constructor(private swalService: SwalService) {
     this.form = new FormGroup({
       title: new FormControl('', Validators.required),
-      poster: new FormControl('', Validators.required),
+      poster: new FormControl('', [Validators.required, Validators.pattern(this.regex)]),
       genre: new FormControl([], Validators.required),
       actors: new FormControl('',),
       company: new FormControl(''),

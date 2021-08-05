@@ -16,5 +16,7 @@
   "movie.form.rating": "Rating",
   "movie.form.action.cancel": "Cancel",
   "movie.form.action.create": "Create",
-  "movie.form.action.update": "Update"
+  "movie.form.action.update": "Update",
+  "common.required.field": "Required field",
+  "common.patter.field.error": "Invalid value"
 }
