@@ -27,7 +27,6 @@ export class GenreChipsComponent implements ControlValueAccessor {
 
   addChip(event: any) {
     if (event.target.value) {
-      console.log(event.target.value);
       this.genre.push(event.target.value as string);
       this.onChange(this.genre);
       this.onTouched();

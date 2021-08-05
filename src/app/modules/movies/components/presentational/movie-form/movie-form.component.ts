@@ -9,7 +9,7 @@ import {SwalService} from "../../../../../services/swal.service";
   templateUrl: './movie-form.component.html',
   styleUrls: ['./movie-form.component.scss']
 })
-export class MovieFormComponent implements OnInit, OnChanges {
+export class MovieFormComponent implements OnInit {
 
   @Input() isLoading!: boolean;
   @Input() movie!: MovieInterface;
@@ -38,7 +38,9 @@ export class MovieFormComponent implements OnInit, OnChanges {
   }
 
   updateMovie() {
-    this.updateCurrentMovie.emit(new MovieEntity({id: this.movie.id, ...this.form.getRawValue()}))
+    this.updateCurrentMovie.emit(new MovieEntity(
+      {id: this.movie.id, ...this.form.getRawValue()}
+    ))
   }
 
   setDataToForm(movie: MovieEntity) {
@@ -48,15 +50,8 @@ export class MovieFormComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
-    console.log(this.movie);
     this.setDataToForm(this.movie);
   }
 
-
-  ngOnChanges(changes: SimpleChanges): void {
-    /* if (changes.movieToEdit?.currentValue) {
-       this.setDataToForm(changes.movieToEdit.currentValue);
-     } */
-  }
 
 }

@@ -104,12 +104,14 @@
             <button class='w-auto bg-gray-500 hover:bg-gray-700 rounded-lg shadow-xl font-medium text-white px-4 py-2'>
               {{"movie.form.action.cancel" | translate}}
             </button>
-            <button type="submit" *ngIf="!isUpdateMode"
+            <button *ngIf="!isUpdateMode"
+                    type="submit"
                     (click)="submitForm()"
                     class='w-auto bg-purple-500 hover:bg-purple-700 rounded-lg shadow-xl font-medium text-white px-4 py-2'>
               {{"movie.form.action.create" | translate}}
             </button>
-            <button type="submit"
+            <button *ngIf="isUpdateMode"
+                    type="submit"
                     (click)="updateMovie()"
                     class='w-auto bg-purple-500 hover:bg-purple-700 rounded-lg shadow-xl font-medium text-white px-4 py-2'>
               {{"movie.form.action.update" | translate}}
