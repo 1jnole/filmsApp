@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 
-import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
 import {RouterModule} from "@angular/router";
 import {NgxsModule} from "@ngxs/store";
@@ -14,6 +14,8 @@ import {AppRoutingModule} from "./app-routing.module";
 import {NgxsActionsExecutingModule} from "@ngxs-labs/actions-executing";
 import {NgxsRouterPluginModule} from "@ngxs/router-plugin";
 import {ErrorHandlerInterceptor} from "./interceptors/error-handler.interceptor";
+import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,13 @@ import {ErrorHandlerInterceptor} from "./interceptors/error-handler.interceptor"
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: httpTranslateLoader,
+        deps: [HttpClient]
+      }
+    }),
     RouterModule,
     FormsModule,
     NgxsModule.forRoot([],
@@ -51,4 +60,8 @@ import {ErrorHandlerInterceptor} from "./interceptors/error-handler.interceptor"
   bootstrap: [AppComponent]
 })
 export class AppModule {
+}
+
+export function httpTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http);
 }

@@ -14,6 +14,7 @@ import {DetailMovieComponent} from './components/container/detail-movie/detail-m
 import {UtilsModule} from "../utils/utils.module";
 import { DetailViewMovieComponent } from './components/presentational/detail-view-movie/detail-view-movie.component';
 import { EditMovieComponent } from './components/container/edit-movie/edit-movie.component';
+import {TranslateModule} from "@ngx-translate/core";
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { EditMovieComponent } from './components/container/edit-movie/edit-movie
     ReactiveFormsModule,
     RouterModule,
     UtilsModule,
-    NgxsModule.forFeature([MovieState])
+    NgxsModule.forFeature([MovieState]),
+    TranslateModule
   ]
 })
 export class MoviesModule {
