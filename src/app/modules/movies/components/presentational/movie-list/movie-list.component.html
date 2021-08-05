@@ -1,9 +1,11 @@
-<div class="grid grid-cols-1 p-8 gap-8 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-3">
+<div class="grid grid-cols-1 p-8 gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3">
   <ng-container *ngFor="let movie of movies; trackBy: trackByFn; let lastItem = last">
     <div class="rounded-xl shadow-xl">
-      <a [routerLink]="['/movie/movie-detail/', movie.id]" class="text-xl font-bold truncate mt-1 m-2">{{movie.title}}</a>
+      <a [routerLink]="['/movie/movie-detail/', movie.id]"
+         class="text-xl font-bold truncate mt-1 m-2 overflow-ellipsis">{{movie.title}}</a>
       <ng-container *ngIf="movie?.poster; else noImage">
-        <img alt="No Image" class="rounded-t-xl  w-full h-36 object-cover" [src]="movie.poster">
+        <img alt="No Image" class="rounded-t-xl  w-full h-36 object-cover"
+             [src]="movie?.poster ? movie.poster : 'https://www.agora-gallery.com/advice/wp-content/uploads/2015/10/image-placeholder.png'">
       </ng-container>
       <div class="flex flex-col p-7">
         <div class="flex flex-row">
@@ -19,7 +21,6 @@
     </div>
   </ng-container>
 </div>
-
 
 <ng-template #noImage>
   <img class="rounded-t-xl w-full h-36 object-cover"

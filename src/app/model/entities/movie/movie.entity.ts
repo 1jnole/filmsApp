@@ -41,7 +41,7 @@ export class MovieEntity implements MovieInterface {
     });
   }
 
-  static toMovieDTO({ duration, genre, imdbRating, poster, title, year, actors, company}: MovieDto) {
+  static toMovieDTO({duration, genre, imdbRating, poster, title, year, actors, company}: MovieDto) {
     return {
       id: UuidGenerator.newUuid(),
       duration: parseInt(duration?.toString(), 10),
