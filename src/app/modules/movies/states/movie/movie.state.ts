@@ -10,6 +10,7 @@ import {AddNewMovieAction} from "../../actions/movies/add-new-movie.action";
 import {GetMovieByIdAction} from "../../actions/movies/get-movie-by-id.action";
 import {DeleteMovieAction} from "../../actions/movies/delete-movie.action";
 import {UpdateMovieAction} from "../../actions/movies/update-movie.action";
+import {CompanyEnum} from "../../../../model/enums/movie/company.enum";
 
 
 export interface MovieStateModel {
@@ -30,7 +31,8 @@ export interface MovieStateModel {
       imdbRating: 0,
       poster: "",
       title: "",
-      year: 0
+      year: 0,
+      company: CompanyEnum.FOX
     }),
     movieToView: new MovieEntity({
       id: 0,
@@ -40,7 +42,8 @@ export interface MovieStateModel {
       imdbRating: 0,
       poster: "",
       title: "",
-      year: 0
+      year: 0,
+      company: CompanyEnum.FOX
     })
   }
 })

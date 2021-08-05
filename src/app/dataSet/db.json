@@ -50,7 +50,8 @@
       "imdbRating": 6.25,
       "actors": [
         1
-      ]
+      ],
+      "company": "MGM"
     },
     {
       "id": 4,
@@ -93,20 +94,21 @@
     },
     {
       "id": 6,
-      "title": "V/H/S: Viral",
-      "poster": "http://dummyimage.com/400x600.png/dddddd/000000",
+      "duration": 239,
       "genre": [
         "Horror",
         "Thriller"
       ],
-      "year": 1995,
-      "duration": 239,
       "imdbRating": 6.99,
+      "poster": "http://dummyimage.com/400x600.png/dddddd/000000",
+      "title": "V/H/S: Viral",
+      "year": 1995,
       "actors": [
         3,
         4,
         5
-      ]
+      ],
+      "company": "MGM"
     },
     {
       "id": 7,

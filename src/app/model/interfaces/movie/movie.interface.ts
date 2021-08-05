@@ -1,3 +1,5 @@
+import {CompanyEnum} from "../../enums/movie/company.enum";
+
 export interface MovieInterface {
   id: number;
   title: string;
@@ -7,4 +9,5 @@ export interface MovieInterface {
   duration: number;
   imdbRating: number;
   actors: number[];
+  company: CompanyEnum;
 }

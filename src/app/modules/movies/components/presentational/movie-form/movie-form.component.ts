@@ -3,6 +3,9 @@ import {MovieInterface} from "../../../../../model/interfaces/movie/movie.interf
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {MovieEntity} from "../../../../../model/entities/movie/movie.entity";
 import {SwalService} from "../../../../../services/swal.service";
+import {CompanyEnum} from "../../../../../model/enums/movie/company.enum";
+import {COMPANIES} from "../../../../../model/constants/companies";
+import {StudioInterface} from "../../../../../model/interfaces/movie/studio.interface";
 
 @Component({
   selector: 'app-movie-form',
@@ -19,6 +22,7 @@ export class MovieFormComponent implements OnInit {
   @Output() updateCurrentMovie = new EventEmitter<MovieEntity>();
 
   form: FormGroup;
+  companies: StudioInterface[];
 
   constructor(private swalService: SwalService) {
     this.form = new FormGroup({
@@ -31,6 +35,7 @@ export class MovieFormComponent implements OnInit {
       duration: new FormControl(''),
       imdbRating: new FormControl(''),
     });
+    this.companies = COMPANIES;
   }
 
   submitForm() {

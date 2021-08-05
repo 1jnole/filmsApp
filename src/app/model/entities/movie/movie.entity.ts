@@ -1,6 +1,7 @@
 import {MovieInterface} from '../../interfaces/movie/movie.interface';
 import {MovieDto} from '../../dto/movie/movie.dto';
 import {UuidGenerator} from "../../../modules/utils/utilities/uuid-generator";
+import {CompanyEnum} from "../../enums/movie/company.enum";
 
 
 export class MovieEntity implements MovieInterface {
@@ -12,8 +13,9 @@ export class MovieEntity implements MovieInterface {
   duration: number;
   imdbRating: number;
   actors: number[];
+  company: CompanyEnum;
 
-  constructor({id, duration, genre, imdbRating, poster, title, year, actors}: MovieInterface) {
+  constructor({id, duration, genre, imdbRating, poster, title, year, actors, company}: MovieInterface) {
     this.id = id;
     this.duration = duration;
     this.genre = genre;
@@ -22,9 +24,10 @@ export class MovieEntity implements MovieInterface {
     this.title = title;
     this.year = year;
     this.actors = actors;
+    this.company = company;
   }
 
-  static fromMovieDTO({id, duration, genre, imdbRating, poster, title, year, actors}: MovieDto) {
+  static fromMovieDTO({id, duration, genre, imdbRating, poster, title, year, actors, company}: MovieDto) {
     return new MovieEntity({
       id,
       duration,
@@ -33,11 +36,12 @@ export class MovieEntity implements MovieInterface {
       poster,
       title,
       year,
-      actors
+      actors,
+      company: company
     });
   }
 
-  static toMovieDTO({ duration, genre, imdbRating, poster, title, year, actors}: MovieDto) {
+  static toMovieDTO({ duration, genre, imdbRating, poster, title, year, actors, company}: MovieDto) {
     return {
       id: UuidGenerator.newUuid(),
       duration: parseInt(duration?.toString(), 10),
@@ -46,7 +50,8 @@ export class MovieEntity implements MovieInterface {
       poster,
       title,
       year,
-      actors
+      actors,
+      company: company
     }
   }
 }
