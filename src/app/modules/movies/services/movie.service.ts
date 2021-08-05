@@ -40,7 +40,7 @@ export class MovieService {
   }
 
   updateMovie(movie: MovieInterface): Observable<void> {
-    return this.http.put<void>(`${this.context}/movies/${movie.id}`, {...movie});
+    return this.http.put<void>(`${this.context}/moviess/${movie.id}`, {...movie});
   }
 
 
