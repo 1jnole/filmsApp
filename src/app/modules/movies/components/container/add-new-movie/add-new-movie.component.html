@@ -1,4 +1,4 @@
 <app-movie-form
-  [isAddingMovie]="!!(isAddingMovie$ | async)"
+  [isLoading]="!!(isAddingMovie$ | async)"
   (setNewMovie)="addNewMovie($event)">
 </app-movie-form>

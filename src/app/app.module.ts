@@ -12,6 +12,7 @@ import {AppComponent} from "./components/app/app.component";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {AppRoutingModule} from "./app-routing.module";
 import {NgxsActionsExecutingModule} from "@ngxs-labs/actions-executing";
+import {NgxsRouterPluginModule} from "@ngxs/router-plugin";
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import {NgxsActionsExecutingModule} from "@ngxs-labs/actions-executing";
     NgxsLoggerPluginModule.forRoot({
       disabled: false
     }),
+    NgxsRouterPluginModule.forRoot(),
     NgxsActionsExecutingModule.forRoot(),
     NgxsStoragePluginModule.forRoot({
       storage: StorageOption.SessionStorage

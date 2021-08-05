@@ -14,8 +14,8 @@
       </div>
     </div>
 
-    <ng-container *ngIf="!isAddingMovie; else pageLoader">
-      <form [formGroup]="form" (ngSubmit)="submitForm()">
+    <ng-container *ngIf="!isLoading; else pageLoader">
+      <form [formGroup]="form">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 mt-5 mx-7">
           <div class="grid grid-cols-1">
             <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Title</label>
@@ -37,6 +37,7 @@
         <div class="grid grid-cols-1 mt-5 mx-7">
           <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Actors</label>
           <select
+
             formControlName="actors"
             class="py-2 px-3 rounded-lg border-2 border-purple-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent">
             <option>Option 1</option>
@@ -49,7 +50,7 @@
         <div class="grid grid-cols-1 mt-5 mx-7">
           <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Companies</label>
           <select
-            formControlName="companies"
+            formControlName="company"
             class="py-2 px-3 rounded-lg border-2 border-purple-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent">
             <option>Option 1</option>
             <option>Option 2</option>
@@ -61,6 +62,7 @@
         <div class="grid grid-cols-1 mt-5 mx-7">
           <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Years</label>
           <input
+            formControlName="year"
             class="py-2 px-3 rounded-lg border-2 border-purple-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
             type="number" placeholder="Years"/>
         </div>
@@ -68,6 +70,7 @@
         <div class="grid grid-cols-1 mt-5 mx-7">
           <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Duration</label>
           <input
+            formControlName="duration"
             class="py-2 px-3 rounded-lg border-2 border-purple-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
             type="number" placeholder="Another Input"/>
         </div>
@@ -75,20 +78,29 @@
         <div class="grid grid-cols-1 mt-5 mx-7">
           <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Rating</label>
           <input
+            formControlName="imdbRating"
             type="number"
             class="py-2 px-3 rounded-lg border-2 border-purple-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
             placeholder="Rating"/>
         </div>
 
-        <div class='flex items-center justify-center  md:gap-8 gap-4 pt-5 pb-5'>
-          <button class='w-auto bg-gray-500 hover:bg-gray-700 rounded-lg shadow-xl font-medium text-white px-4 py-2'>
-            Cancel
-          </button>
-          <button type="submit"
-                  class='w-auto bg-purple-500 hover:bg-purple-700 rounded-lg shadow-xl font-medium text-white px-4 py-2'>
-            Create
-          </button>
-        </div>
+        <ng-container>
+          <div class='flex items-center justify-center  md:gap-8 gap-4 pt-5 pb-5'>
+            <button class='w-auto bg-gray-500 hover:bg-gray-700 rounded-lg shadow-xl font-medium text-white px-4 py-2'>
+              Cancel
+            </button>
+            <button type="submit" *ngIf="!isUpdateMode"
+                    (click)="submitForm()"
+                    class='w-auto bg-purple-500 hover:bg-purple-700 rounded-lg shadow-xl font-medium text-white px-4 py-2'>
+              Create
+            </button>
+            <button type="submit"
+                    (click)="updateMovie()"
+                    class='w-auto bg-purple-500 hover:bg-purple-700 rounded-lg shadow-xl font-medium text-white px-4 py-2'>
+              Update
+            </button>
+          </div>
+        </ng-container>
       </form>
     </ng-container>
   </div>

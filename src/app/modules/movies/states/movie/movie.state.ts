@@ -7,11 +7,15 @@ import {MovieService} from "../../services/movie.service";
 
 import {MovieEntity} from "../../../../model/entities/movie/movie.entity";
 import {AddNewMovieAction} from "../../actions/movies/add-new-movie.action";
+import {GetMovieByIdAction} from "../../actions/movies/get-movie-by-id.action";
+import {DeleteMovieAction} from "../../actions/movies/delete-movie.action";
+import {UpdateMovieAction} from "../../actions/movies/update-movie.action";
 
 
 export interface MovieStateModel {
   movies: MovieInterface[];
   newMovie: MovieInterface;
+  movieToView: MovieInterface;
 }
 
 @State<MovieStateModel>({
@@ -19,10 +23,20 @@ export interface MovieStateModel {
   defaults: {
     movies: [],
     newMovie: new MovieEntity({
+      id: 0,
       actors: [],
       duration: 0,
       genre: [],
+      imdbRating: 0,
+      poster: "",
+      title: "",
+      year: 0
+    }),
+    movieToView: new MovieEntity({
       id: 0,
+      actors: [],
+      duration: 0,
+      genre: [],
       imdbRating: 0,
       poster: "",
       title: "",
@@ -47,12 +61,40 @@ export class MovieState {
     return state.newMovie
   }
 
+  @Selector()
+  public static getMovieToViewState(state: MovieStateModel) {
+    return state.movieToView
+  }
+
   @Action(GetMoviesAction)
   getMovies({patchState}: StateContext<MovieStateModel>) {
     return this.movieService.getMovies().pipe(tap((movies) => {
       patchState({
         movies
       });
+    }));
+  }
+
+  @Action(GetMovieByIdAction)
+  getMovieById({patchState}: StateContext<MovieStateModel>, {id}: GetMovieByIdAction) {
+    return this.movieService.getMovieById(id).pipe(tap((movieToView) => {
+      patchState({
+        movieToView: movieToView
+      });
+    }));
+  }
+
+  @Action(DeleteMovieAction)
+  deleteMovie({patchState, dispatch}: StateContext<MovieStateModel>, {id}: DeleteMovieAction) {
+    return this.movieService.deleteMovie(id).pipe(tap((movie) => {
+      dispatch(new GetMoviesAction());
+    }));
+  }
+
+  @Action(UpdateMovieAction)
+  updateMovie({patchState, dispatch}: StateContext<MovieStateModel>, {movie}: UpdateMovieAction) {
+    return this.movieService.updateMovie(movie).pipe(tap(() => {
+      dispatch(new GetMoviesAction());
     }));
   }
 

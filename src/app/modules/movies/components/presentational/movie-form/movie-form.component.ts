@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges
 import {MovieInterface} from "../../../../../model/interfaces/movie/movie.interface";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {MovieEntity} from "../../../../../model/entities/movie/movie.entity";
+import {SwalService} from "../../../../../services/swal.service";
 
 @Component({
   selector: 'app-movie-form',
@@ -10,30 +11,34 @@ import {MovieEntity} from "../../../../../model/entities/movie/movie.entity";
 })
 export class MovieFormComponent implements OnInit, OnChanges {
 
-  @Input() isAddingMovie!: boolean;
+  @Input() isLoading!: boolean;
+  @Input() movie!: MovieInterface;
+  @Input() isUpdateMode!: boolean;
+
   @Output() setNewMovie = new EventEmitter<MovieEntity>();
+  @Output() updateCurrentMovie = new EventEmitter<MovieEntity>();
 
   form: FormGroup;
 
-  constructor() {
+  constructor(private swalService: SwalService) {
     this.form = new FormGroup({
-      title: new FormControl('pepe', Validators.required),
-      poster: new FormControl('3', Validators.required),
-      genre: new FormControl([1, 2, 3, 4], Validators.required),
-      actors: new FormControl('34',),
-      company: new FormControl('45'),
-      year: new FormControl('56'),
-      duration: new FormControl('78'),
-      imdbRating: new FormControl('920'),
+      title: new FormControl('', Validators.required),
+      poster: new FormControl('', Validators.required),
+      genre: new FormControl([], Validators.required),
+      actors: new FormControl('',),
+      company: new FormControl(''),
+      year: new FormControl(''),
+      duration: new FormControl(''),
+      imdbRating: new FormControl(''),
     });
-  }
-
-  close() {
-    //   this.closeAddMovieModal.emit();
   }
 
   submitForm() {
     this.setNewMovie.emit(new MovieEntity({...this.form.getRawValue()}))
+  }
+
+  updateMovie() {
+    this.updateCurrentMovie.emit(new MovieEntity({id: this.movie.id, ...this.form.getRawValue()}))
   }
 
   setDataToForm(movie: MovieEntity) {
@@ -43,8 +48,10 @@ export class MovieFormComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
-    // this.setDataToForm(this.movieToEdit);
+    console.log(this.movie);
+    this.setDataToForm(this.movie);
   }
+
 
   ngOnChanges(changes: SimpleChanges): void {
     /* if (changes.movieToEdit?.currentValue) {

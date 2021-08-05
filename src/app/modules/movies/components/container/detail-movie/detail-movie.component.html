@@ -1,1 +1,7 @@
-<p>detail-movie works!</p>
+<ng-container *ngIf="movieToView$ | async as movie">
+  <app-detail-view-movie
+    [movie]="movie"
+    (edit)="editMovie($event)"
+    (delete)="deleteMovie($event)">
+  </app-detail-view-movie>
+</ng-container>
