@@ -5,7 +5,7 @@
   "detail.view.movie.action.delete": "Delete",
   "detail.view.movie.action.edit": "Edit",
   "movie.form.name": "Name",
-  "movie.form.header.title": "Add movie",
+  "movie.form.header.title": "Movie",
   "movie.form.genre": "Genre",
   "movie.form.title": "Title",
   "movie.form.poster": "Poster",

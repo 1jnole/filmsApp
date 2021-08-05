@@ -1,9 +1,8 @@
-import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '@angular/core';
 import {MovieInterface} from "../../../../../model/interfaces/movie/movie.interface";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {MovieEntity} from "../../../../../model/entities/movie/movie.entity";
 import {SwalService} from "../../../../../services/swal.service";
-import {CompanyEnum} from "../../../../../model/enums/movie/company.enum";
 import {COMPANIES} from "../../../../../model/constants/companies";
 import {StudioInterface} from "../../../../../model/interfaces/movie/studio.interface";
 
@@ -12,7 +11,7 @@ import {StudioInterface} from "../../../../../model/interfaces/movie/studio.inte
   templateUrl: './movie-form.component.html',
   styleUrls: ['./movie-form.component.scss']
 })
-export class MovieFormComponent implements OnInit {
+export class MovieFormComponent implements OnChanges {
 
   @Input() isLoading!: boolean;
   @Input() movie!: MovieInterface;
@@ -23,7 +22,7 @@ export class MovieFormComponent implements OnInit {
 
   form: FormGroup;
   companies: StudioInterface[];
-  regex = /^((https?|ftp|smtp):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/;
+  regex =  /(https:\/\/)([^\s(["<,>/]*)(\/)[^\s[",><]*(.png|.jpg)(\?[^\s[",><]*)?/g
 
   constructor(private swalService: SwalService) {
     this.form = new FormGroup({
@@ -55,9 +54,11 @@ export class MovieFormComponent implements OnInit {
     })
   }
 
-  ngOnInit(): void {
-    this.setDataToForm(this.movie);
-  }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.movie?.currentValue) {
+      this.setDataToForm(changes.movie.currentValue);
+    }
+  }
 
 }
