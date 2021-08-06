@@ -42,8 +42,19 @@ export class GenreChipsComponent implements ControlValueAccessor {
     this.onTouched = fn;
   }
 
-  writeValue(obj: any): void {
-    this.genre = obj as [];
+  writeValue(obj: []): void {
+
+    // When form value set when chips list initialized
+    /* if (this.genre && obj) {
+      this.selectChips(value);
+    } else if (value) {
+      // When chips not initialized
+      this.genre = obj;
+    }
+    console.log(obj);
+    this.genre = obj.map((item: any) => {return {...item};});
+    console.log(this.genre) */
+
   }
 
   trackByFn(index: number): number {

@@ -188,35 +188,6 @@
         5,
         6
       ]
-    },
-    {
-      "movie": {
-        "id": 75585,
-        "duration": 99,
-        "genre": [
-          "sdf",
-          "dfs",
-          "dfs",
-          "dfsd",
-          "sdf"
-        ],
-        "imdbRating": 9,
-        "poster": "",
-        "title": "pandilleros",
-        "year": 99,
-        "actors": ""
-      },
-      "id": 75585
-    },
-    {
-      "id": 21871,
-      "duration": 234,
-      "genre": [],
-      "imdbRating": 34,
-      "poster": "",
-      "title": "Carros de fuego",
-      "year": 190,
-      "actors": ""
     }
   ],
   "actors": [

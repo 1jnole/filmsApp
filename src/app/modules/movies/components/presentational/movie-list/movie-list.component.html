@@ -1,30 +1,45 @@
-<div class="grid grid-cols-1 p-8 gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3">
-  <ng-container *ngFor="let movie of movies; trackBy: trackByFn; let lastItem = last">
-    <div class="rounded-xl shadow-xl">
-      <a [routerLink]="['/movie/movie-detail/', movie.id]"
-         class="text-xl font-bold truncate mt-1 m-2 overflow-ellipsis">{{movie.title}}</a>
-      <ng-container *ngIf="movie?.poster; else noImage">
-        <img alt="No Image" class="rounded-t-xl  w-full h-36 object-cover"
-             [src]="movie?.poster ? movie.poster : 'https://www.agora-gallery.com/advice/wp-content/uploads/2015/10/image-placeholder.png'">
-      </ng-container>
-      <div class="flex flex-col p-7">
-        <div class="flex flex-row">
-          <div *ngFor="let item of movie?.genre trackBy: trackByGenreFn; index as i"
-               class="text-xs bg-yellow-100 p-1 px-2 mr-2 text-yellow-700 rounded-2xl"># {{item}}
-          </div>
+<div class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
+  <div class="flex flex-col w-full mb-6 lg:justify-between lg:flex-row md:mb-8">
+    <div class="flex items-center mb-5 md:mb-6 group lg:max-w-xl">
+      <a href="/" aria-label="Item" class="mr-3">
+        <div class="flex items-center justify-center w-16 h-16 rounded-full bg-indigo-50">
+          <svg class="w-12 h-12 text-deep-purple-accent-400" stroke="currentColor" viewBox="0 0 52 52">
+            <polygon stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"
+                     points="29 13 14 29 25 29 23 39 38 23 27 23"></polygon>
+          </svg>
         </div>
-      </div>
-      <div class="flex justify-end">
-        <a *ngIf="lastItem" [routerLink]="['add-new-movie']">
-          +
-        </a>
-      </div>
+      </a>
+      <h2 class="font-sans text-3xl font-bold leading-none tracking-tight text-gray-900 sm:text-4xl">
+        <span class="inline-block mb-2">{{"header.links.movies" | translate}}</span>
+        <span
+          class="h-1 ml-auto duration-300 origin-left transform bg-deep-purple-accent-400 scale-x-30 group-hover:scale-x-100"></span>
+      </h2>
     </div>
-  </ng-container>
+  </div>
+  <div class="grid gap-8 row-gap-5 mb-8 lg:grid-cols-3 lg:row-gap-8">
+    <ng-container *ngFor="let movie of movies; trackBy: trackByFn; let lastItem = last">
+      <ng-container *ngIf="movie?.poster; else noImage">
+        <p class="mb-2 text-xl font-bold leading-none sm:text-2xl truncate whitespace-nowrap overflow-hidden">
+          <a [routerLink]="['/movie/movie-detail/', movie.id]"
+             class="text-xl">{{movie.title}}</a>
+          <img alt="image" class="mt-2 object-cover w-full h-56 mb-2 rounded shadow-lg md:h-64 xl:h-80"
+               [src]="movie?.poster ? movie.poster : 'https://www.agora-gallery.com/advice/wp-content/uploads/2015/10/image-placeholder.png'">
+          <ng-container *ngIf="movie?.genre">
+            <span *ngFor="let item of movie.genre trackBy: trackByGenreFn; index as i"
+                  class="text-xs bg-yellow-100 p-1 px-2 mr-2 text-yellow-700 rounded-2xl"># {{item}}
+            </span>
+          </ng-container>
+          <a *ngIf="lastItem" [routerLink]="['add-new-movie']">
+            +
+          </a>
+        </p>
+      </ng-container>
+    </ng-container>
+  </div>
 </div>
+
 
 <ng-template #noImage>
   <img class="rounded-t-xl w-full h-36 object-cover"
        src="https://www.agora-gallery.com/advice/wp-content/uploads/2015/10/image-placeholder.png" alt="movie"/>
 </ng-template>
-
