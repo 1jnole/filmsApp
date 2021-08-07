@@ -7,6 +7,7 @@
   "movie.form.name": "Name",
   "movie.form.header.title": "Movie",
   "movie.form.genre": "Genre",
+  "movie.form.genres": "Genres",
   "movie.form.title": "Title",
   "movie.form.poster": "Poster",
   "movie.form.actors": "Actors",

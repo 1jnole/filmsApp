@@ -5,7 +5,8 @@
            [src]="movie?.poster ? movie.poster : 'https://www.agora-gallery.com/advice/wp-content/uploads/2015/10/image-placeholder.png'">
       <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
         <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">{{movie.title}}</h1>
-        <div *ngIf="movie?.imdbRating || movie?.duration" class="flex mt-6 justify-between pb-5 border-b-2 border-gray-200 mb-5">
+        <div *ngIf="movie?.imdbRating || movie?.duration"
+             class="flex mt-6 justify-between pb-5 border-b-2 border-gray-200 mb-5">
           <div *ngIf="movie.imdbRating" class="flex">
             <span class="mr-1">{{"movie.form.rating" |translate}}</span>
             <span class="font-semibold">{{movie.imdbRating}}</span>
@@ -18,13 +19,17 @@
           </div>
         </div>
 
-        <div class="flex mt-6 justify-start pb-5 border-b-2 border-gray-200 mb-5">
-          <div class="flex">
-            <span class="mr-1">{{"header.links.actors" |translate}}</span>
-            <span class="font-semibold">{{movie.actors}}</span>
+        <div class="mt-6 justify-start pb-5 border-b-2 border-gray-200 mb-5">
+          <span class="mr-1">{{"header.links.actors" |translate}}</span>
+          <div class="flex flex-wrap flex-col">
+            <ng-container *ngFor="let actor of movie.actors">
+              <div
+                class="flex justify-start items-center mr-1 my-1 py-1 px-2">
+                <div class="text-xs leading-none max-w-full flex-initial">{{actor}}</div>
+              </div>
+            </ng-container>
           </div>
         </div>
-
 
         <div *ngIf="movie.company" class="flex mt-6 justify-start pb-5 border-b-2 border-gray-200 mb-5">
           <div class="flex">
@@ -32,6 +37,19 @@
             <span class="font-semibold">{{movie.company}}</span>
           </div>
         </div>
+
+        <div *ngIf="movie.genre" class="mt-6 pb-5 border-b-2 border-gray-200 mb-5">
+          <span class="d-block mr-1">{{"movie.form.genres" |translate}}</span>
+          <div class="flex flex-wrap">
+            <ng-container *ngFor="let movie of movie.genre">
+              <div
+                class="flex justify-center items-center mr-2 my-1 font-medium py-1 px-2 bg-white rounded-full text-indigo-100 bg-indigo-700 border border-indigo-700 ">
+                <div class="text-xs font-normal leading-none max-w-full flex-initial"># {{movie}}</div>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+
         <div class="flex">
           <button
             (click)="editMovie()"

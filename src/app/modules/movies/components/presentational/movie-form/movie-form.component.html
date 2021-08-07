@@ -118,7 +118,7 @@
                     class='w-auto bg-purple-500 hover:bg-purple-700 rounded-lg shadow-xl font-medium text-white px-4 py-2'>
               {{"movie.form.action.create" | translate}}
             </button>
-            <button *ngIf="isUpdateMode && form.valid"
+            <button *ngIf="isUpdateMode"
                     type="button"
                     (click)="updateMovie()"
                     class='w-auto bg-purple-500 hover:bg-purple-700 rounded-lg shadow-xl font-medium text-white px-4 py-2'>
