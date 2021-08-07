@@ -22,7 +22,7 @@ export class MovieFormComponent implements OnChanges {
 
   form: FormGroup;
   companies: StudioInterface[];
-  regex =  /(https:\/\/)([^\s(["<,>/]*)(\/)[^\s[",><]*(.png|.jpg)(\?[^\s[",><]*)?/g
+  regex =  /(http)?s?:?(\/\/[^"']*\.(?:png|jpg|jpeg|gif|png|svg))/g
 
   constructor(private swalService: SwalService) {
     this.form = new FormGroup({
@@ -38,7 +38,7 @@ export class MovieFormComponent implements OnChanges {
     this.companies = COMPANIES;
   }
 
-  submitForm() {
+  createMovie() {
     this.setNewMovie.emit(new MovieEntity({...this.form.getRawValue()}))
   }
 
@@ -53,7 +53,6 @@ export class MovieFormComponent implements OnChanges {
       ...movie
     })
   }
-
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.movie?.currentValue) {

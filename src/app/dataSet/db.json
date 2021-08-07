@@ -2,7 +2,7 @@
   "movies": [
     {
       "id": 1,
-      "duration": 162,
+      "duration": 120,
       "genre": [
         "Comedy",
         "Musical",

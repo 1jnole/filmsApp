@@ -52,7 +52,6 @@
             {{"movie.form.actors" | translate}}
           </label>
           <select
-
             formControlName="actors"
             class="py-2 px-3 rounded-lg border-2 border-purple-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent">
             <option>Option 1</option>
@@ -109,13 +108,13 @@
           <div class='flex items-center justify-center md:gap-8 gap-4 pt-5 pb-5'>
             <ng-container *ngIf="movie?.id">
               <a [routerLink]="['/movie/movie-detail', movie?.id]"
-                 class='cursor-pointer w-auto bg-gray-500 hover:bg-gray-700 rounded-lg shadow-xl font-medium text-white px-4 py-2'>
+                 class='cursor-pointer w-auto bg-red-500 hover:bg-red-700 rounded-lg shadow-xl font-medium text-white px-4 py-2'>
                 {{"movie.form.action.cancel" | translate}}
               </a>
             </ng-container>
-            <button *ngIf="!isUpdateMode"
-                    type="submit"
-                    (click)="submitForm()"
+            <button *ngIf="isUpdateMode"
+                    type="button"
+                    (click)="createMovie()"
                     class='w-auto bg-purple-500 hover:bg-purple-700 rounded-lg shadow-xl font-medium text-white px-4 py-2'>
               {{"movie.form.action.create" | translate}}
             </button>
@@ -136,7 +135,7 @@
 <ng-template #requiredError let-formControl="formControl">
   <div class="container mx-7 mt-1 flex flex-row">
     <div
-      *ngIf="formControl.hasError('required')"
+      *ngIf="formControl.touched && formControl.hasError('required')"
       class="flex justify-center items-center m-1 text-base text-xs font-medium">
       <div class="flex-initial max-w-full leading-none text-xs text-red-600 font-normal">
         {{"common.required.field" | translate}}
@@ -148,7 +147,7 @@
 <ng-template #patternError let-formControl="formControl">
   <div class="container mx-7 mt-1 flex flex-row">
     <div
-      *ngIf="formControl.hasError('pattern')"
+      *ngIf="formControl.touched && formControl.hasError('pattern')"
       class="flex justify-center items-center m-1 text-base text-xs font-medium">
       <div class="flex-initial max-w-full leading-none text-xs text-red-600 font-normal">
         {{"common.patter.field.error" | translate}}

@@ -3,7 +3,7 @@
     {{"movie.form.genre" | translate}}
   </label>
   <input
-    (keyup.enter)="addChip($event)"
+    (keyup.enter)="addElement($event)"
     class="py-2 px-3 rounded-lg border-2 border-purple-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
     id="genres"
     type="text"
@@ -13,11 +13,11 @@
 
 
 <div class="container mx-7 mt-3 flex flex-row">
-  <ng-container *ngFor="let genre of genre; index as i; trackBy: trackByFn">
+  <ng-container *ngFor="let genre of genres; index as i; trackBy: trackByFn">
     <div
       class="flex justify-center items-center m-1 px-2 py-1 rounded-full bg-blue-700 text-base text-white font-medium">
       <div class="flex-initial max-w-full leading-none text-xs font-normal">{{genre}}</div>
-      <div (click)="removeChip(genre)">
+      <div (click)="removeElement(genre)">
         <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none" viewBox="0 0 24 24"
              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
              class="feather feather-x cursor-pointer hover:text-yellow-400 rounded-full w-4 h-4 ml-2">
