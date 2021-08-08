@@ -1,0 +1,15 @@
+<ng-container *ngIf="movieToView$ | async as movie">
+  <ng-container *ngIf="!(isLoadingMovie$ | async); else pageLoader">
+    <app-detail-view-movie
+      [movie]="movie"
+      [isDeletingMovie]="!!(isDeletingMovie$ | async)"
+      (edit)="editMovie($event)"
+      (delete)="deleteMovie($event)">
+    </app-detail-view-movie>
+  </ng-container>
+</ng-container>
+
+
+<ng-template #pageLoader>
+  <app-spinner></app-spinner>
+</ng-template>
