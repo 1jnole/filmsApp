@@ -1,0 +1,156 @@
+<div class="flex h-screen items-center justify-center mt-32 mb-32">
+  <div class="grid bg-white rounded-lg  w-11/12 md:w-9/12 lg:w-1/2">
+    <ng-container *ngIf="!isLoading; else pageLoader">
+      <div class="flex justify-center py-4">
+        <div class="flex bg-purple-200 rounded-full md:p-4 p-2 border-2 border-purple-300">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z"/>
+          </svg>
+        </div>
+      </div>
+      <div class="flex justify-center">
+        <div class="flex">
+          <h1 class="text-gray-600 font-bold md:text-2xl text-xl">
+            {{"movie.form.header.title" | translate}}
+          </h1>
+        </div>
+      </div>
+      <form [formGroup]="form">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 mt-5 mx-7">
+          <div class="grid grid-cols-1">
+            <label
+              class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">  {{"movie.form.title" | translate}}</label>
+            <input formControlName="title"
+                   class="py-2 px-3 rounded-lg border-2 border-purple-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                   type="text" placeholder="Title"/>
+          </div>
+        </div>
+        <ng-container [ngTemplateOutlet]="requiredError"
+                      [ngTemplateOutletContext]="{formControl:  form.get('title')}">
+        </ng-container>
+
+        <div class="grid grid-cols-1 mt-5 mx-7">
+          <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">
+            {{"movie.form.poster" | translate}}
+          </label>
+          <input formControlName="poster"
+                 class="py-2 px-3 rounded-lg border-2 border-purple-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                 type="text" placeholder="Poster"/>
+        </div>
+        <ng-container [ngTemplateOutlet]="patternError"
+                      [ngTemplateOutletContext]="{formControl:  form.get('poster')}">
+        </ng-container>
+        <ng-container [ngTemplateOutlet]="requiredError"
+                      [ngTemplateOutletContext]="{formControl:  form.get('poster')}">
+        </ng-container>
+        <app-genre-chips formControlName="genre"></app-genre-chips>
+
+        <div class="grid grid-cols-1 mt-5 mx-7">
+          <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">
+            {{"movie.form.actors" | translate}}
+          </label>
+         <app-select-chips formControlName="actors" [options]="availableActors"></app-select-chips>
+        </div>
+
+
+        <div class="grid grid-cols-1 mt-5 mx-7">
+          <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">
+            {{"movie.form.companies" | translate}}
+          </label>
+          <select
+            formControlName="company"
+            class="py-2 px-3 rounded-lg border-2 border-purple-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent">
+            <option *ngFor="let company of companies">{{company.label}}</option>
+          </select>
+        </div>
+
+
+        <div class="grid grid-cols-1 mt-5 mx-7">
+          <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">
+            {{"movie.form.years" | translate}}
+          </label>
+          <input
+            formControlName="year"
+            class="py-2 px-3 rounded-lg border-2 border-purple-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+            type="number" placeholder="Years"/>
+        </div>
+
+        <div class="grid grid-cols-1 mt-5 mx-7">
+          <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">
+            {{"movie.form.duration" | translate}}
+          </label>
+          <input
+            formControlName="duration"
+            class="py-2 px-3 rounded-lg border-2 border-purple-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+            type="number" placeholder="Another Input"/>
+        </div>
+
+        <div class="grid grid-cols-1 mt-5 mx-7">
+          <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">
+            {{"movie.form.rating" | translate}}
+          </label>
+          <input
+            formControlName="imdbRating"
+            type="number"
+            class="py-2 px-3 rounded-lg border-2 border-purple-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+            placeholder="Rating"/>
+        </div>
+
+        <ng-container>
+          <div class='flex items-center justify-center md:gap-8 gap-4 pt-5 pb-5'>
+            <ng-container *ngIf="movie?.id">
+              <a [routerLink]="['/movie/movie-detail', movie?.id]"
+                 class='cursor-pointer w-auto bg-red-500 hover:bg-red-700 rounded-lg shadow-xl font-medium text-white px-4 py-2'>
+                {{"movie.form.action.cancel" | translate}}
+              </a>
+            </ng-container>
+            <button *ngIf="!isUpdateMode"
+                    [ladda]="isLoading"
+                    type="button"
+                    (click)="createMovie()"
+                    class='w-auto bg-purple-500 hover:bg-purple-700 rounded-lg shadow-xl font-medium text-white px-4 py-2'>
+              {{"movie.form.action.create" | translate}}
+            </button>
+            <button *ngIf="isUpdateMode"
+                    [ladda]="isLoading"
+                    type="button"
+                    (click)="updateMovie()"
+                    class='w-auto bg-purple-500 hover:bg-purple-700 rounded-lg shadow-xl font-medium text-white px-4 py-2'>
+              {{"movie.form.action.update" | translate}}
+            </button>
+          </div>
+        </ng-container>
+      </form>
+    </ng-container>
+  </div>
+</div>
+
+
+<ng-template #requiredError let-formControl="formControl">
+  <div class="container mx-7 mt-1 flex flex-row">
+    <div
+      *ngIf="formControl.touched && formControl.hasError('required')"
+      class="flex justify-center items-center m-1 text-base text-xs font-medium">
+      <div class="flex-initial max-w-full leading-none text-xs text-red-600 font-normal">
+        {{"common.required.field" | translate}}
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #patternError let-formControl="formControl">
+  <div class="container mx-7 mt-1 flex flex-row">
+    <div
+      *ngIf="formControl.touched && formControl.hasError('pattern')"
+      class="flex justify-center items-center m-1 text-base text-xs font-medium">
+      <div class="flex-initial max-w-full leading-none text-xs text-red-600 font-normal">
+        {{"common.patter.field.error" | translate}}
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #pageLoader>
+  <app-spinner></app-spinner>
+</ng-template>

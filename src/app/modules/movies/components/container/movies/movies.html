@@ -1,0 +1,11 @@
+<ng-container *ngIf="!(isLoadingMovies$ | async); else pageLoader">
+  <ng-container *ngIf="movies$ | async as movies">
+    <app-films-list
+      [movies]="movies">
+    </app-films-list>
+  </ng-container>
+</ng-container>
+
+<ng-template #pageLoader>
+  <app-spinner></app-spinner>
+</ng-template>

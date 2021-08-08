@@ -1,0 +1,80 @@
+<section class="text-gray-700 body-font overflow-hidden bg-white">
+  <div class="container px-5 py-24 mx-auto">
+    <div class="lg:w-1/2 mx-auto flex flex-wrap">
+      <img alt="movie-logo" class="lg:w-1/2 w-full object-cover object-center rounded border border-gray-200"
+           [src]="movie?.poster ? movie.poster : 'https://www.agora-gallery.com/advice/wp-content/uploads/2015/10/image-placeholder.png'">
+      <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
+        <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">{{movie.title}}</h1>
+        <div *ngIf="movie?.imdbRating || movie?.duration"
+             class="flex mt-6 justify-between pb-5 border-b-2 border-gray-200 mb-5">
+          <div *ngIf="movie.imdbRating" class="flex">
+            <span class="mr-1">{{"movie.form.rating" |translate}}</span>
+            <span class="font-semibold">{{movie.imdbRating}}</span>
+          </div>
+          <div *ngIf="movie.duration" class="flex ml-6 items-center">
+            <span class="mr-1">{{"movie.form.duration" |translate}}</span>
+            <div class="relative">
+              <span class="font-semibold">{{movie.duration | time}}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-6 justify-start pb-5 border-b-2 border-gray-200 mb-5">
+          <span class="mr-1">{{"header.links.actors" |translate}}</span>
+          <div class="flex flex-wrap flex-col">
+            <ng-container *ngFor="let actor of movie.actors">
+              <div
+                class="flex justify-start items-center mr-1 my-1 py-1 px-2">
+                <div class="text-xs leading-none max-w-full flex-initial">{{actor}}</div>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+
+        <div *ngIf="movie.company" class="flex mt-6 justify-start pb-5 border-b-2 border-gray-200 mb-5">
+          <div class="flex">
+            <span class="mr-1">{{"movie.form.companies" |translate}}</span>
+            <span class="font-semibold">{{movie.company}}</span>
+          </div>
+        </div>
+
+        <div *ngIf="movie.genre" class="mt-6 pb-5 border-b-2 border-gray-200 mb-5">
+          <span class="d-block mr-1">{{"movie.form.genres" |translate}}</span>
+          <div class="flex flex-wrap">
+            <ng-container *ngFor="let movie of movie.genre">
+              <div
+                class="flex justify-center items-center mr-2 my-1 font-medium py-1 px-2 bg-white rounded-full text-indigo-100 bg-indigo-700 border border-indigo-700 ">
+                <div class="text-xs font-normal leading-none max-w-full flex-initial"># {{movie}}</div>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+
+        <div class="flex justify-evenly">
+          <button
+            (click)="editMovie()"
+            [ladda]="isDeletingMovie"
+            class="text-white bg-green-500 border-0 py-2 px-6 focus:outline-none hover:bg-green-400 rounded">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                 stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
+            </svg>
+          </button>
+          <button
+            (click)="deleteMovie()"
+            [ladda]="isDeletingMovie"
+            class="text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-400 rounded">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                 stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+

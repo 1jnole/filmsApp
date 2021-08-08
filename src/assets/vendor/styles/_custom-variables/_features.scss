@@ -1,0 +1,14 @@
+$enable-rtl-support: false;
+@mixin feature-rtl($as-child: true) {
+  @if $enable-rtl-support {
+    @if $as-child {
+      [dir=rtl] & {
+        @content;
+      }
+    } @else {
+      [dir=rtl] {
+        @content;
+      }
+    }
+  }
+}
