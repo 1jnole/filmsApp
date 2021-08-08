@@ -10,10 +10,6 @@ export class TimePipe implements PipeTransform {
     const minutesLeft = value % 60;
 
     return `${hours >= 1 ? `${hours}h` : ''} ${minutesLeft > 0 ? `${minutesLeft < 10 ? '0': ''}${minutesLeft}m`: ''} `
-
-    //return `${hours < 10 ? '0' : ''}${hours}:${minutesLeft < 10 ? '0': ''}${minutesLeft}:00`
   }
-
-
 
 }

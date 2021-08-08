@@ -12,9 +12,10 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AddNewMovieComponent} from './components/container/add-new-movie/add-new-movie.component';
 import {DetailMovieComponent} from './components/container/detail-movie/detail-movie.component';
 import {UtilsModule} from "../utils/utils.module";
-import { DetailViewMovieComponent } from './components/presentational/detail-view-movie/detail-view-movie.component';
-import { EditMovieComponent } from './components/container/edit-movie/edit-movie.component';
+import {DetailViewMovieComponent} from './components/presentational/detail-view-movie/detail-view-movie.component';
+import {EditMovieComponent} from './components/container/edit-movie/edit-movie.component';
 import {TranslateModule} from "@ngx-translate/core";
+import {LaddaModule} from "angular2-ladda";
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import {TranslateModule} from "@ngx-translate/core";
     RouterModule,
     UtilsModule,
     NgxsModule.forFeature([MovieState]),
-    TranslateModule
+    TranslateModule,
+    LaddaModule
   ]
 })
 export class MoviesModule {

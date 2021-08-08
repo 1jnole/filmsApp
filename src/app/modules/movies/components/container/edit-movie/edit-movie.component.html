@@ -1,3 +1,7 @@
 <ng-container *ngIf="movieToEdit$ | async as movie">
-  <app-movie-form [movie]="movie" [isUpdateMode]="true" (updateCurrentMovie)="updateMovie($event)"></app-movie-form>
+  <app-movie-form [movie]="movie"
+                  [isUpdateMode]="true"
+                  [isLoading]="!!(isMovieToEditLoading$ | async)"
+                  (updateCurrentMovie)="updateMovie($event)">
+  </app-movie-form>
 </ng-container>

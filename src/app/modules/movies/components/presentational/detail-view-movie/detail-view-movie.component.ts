@@ -11,6 +11,7 @@ import {SwalService} from "../../../../../services/swal.service";
 export class DetailViewMovieComponent implements OnInit {
 
   @Input() movie!: MovieInterface;
+  @Input() isDeletingMovie!: boolean;
 
   @Output() edit = new EventEmitter<MovieEntity>();
   @Output() delete = new EventEmitter<number>();
@@ -24,7 +25,7 @@ export class DetailViewMovieComponent implements OnInit {
 
   deleteMovie() {
     this.swalService.openSwal({
-      title: 'Are you sure you want delete the selected item?',
+      title: 'Are you sure you want to delete the selected item?',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonText: 'Accept',

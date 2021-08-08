@@ -27,7 +27,7 @@ export class MovieFormComponent implements OnChanges {
   constructor(private swalService: SwalService) {
     this.form = new FormGroup({
       title: new FormControl('', Validators.required),
-      poster: new FormControl('', [Validators.required, Validators.pattern(this.regex)]),
+      poster: new FormControl('', [Validators.required]),
       genre: new FormControl([], Validators.required),
       actors: new FormControl('',),
       company: new FormControl(''),

@@ -1,22 +1,21 @@
 <div class="flex h-screen items-center justify-center mt-32 mb-32">
   <div class="grid bg-white rounded-lg  w-11/12 md:w-9/12 lg:w-1/2">
-    <div class="flex justify-center py-4">
-      <div class="flex bg-purple-200 rounded-full md:p-4 p-2 border-2 border-purple-300">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z"/>
-        </svg>
-      </div>
-    </div>
-    <div class="flex justify-center">
-      <div class="flex">
-        <h1 class="text-gray-600 font-bold md:text-2xl text-xl">
-          {{"movie.form.header.title" | translate}}
-        </h1>
-      </div>
-    </div>
-
     <ng-container *ngIf="!isLoading; else pageLoader">
+      <div class="flex justify-center py-4">
+        <div class="flex bg-purple-200 rounded-full md:p-4 p-2 border-2 border-purple-300">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z"/>
+          </svg>
+        </div>
+      </div>
+      <div class="flex justify-center">
+        <div class="flex">
+          <h1 class="text-gray-600 font-bold md:text-2xl text-xl">
+            {{"movie.form.header.title" | translate}}
+          </h1>
+        </div>
+      </div>
       <form [formGroup]="form">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 mt-5 mx-7">
           <div class="grid grid-cols-1">
@@ -112,7 +111,7 @@
                 {{"movie.form.action.cancel" | translate}}
               </a>
             </ng-container>
-            <button *ngIf="isUpdateMode"
+            <button *ngIf="!isUpdateMode"
                     type="button"
                     (click)="createMovie()"
                     class='w-auto bg-purple-500 hover:bg-purple-700 rounded-lg shadow-xl font-medium text-white px-4 py-2'>
