@@ -16,10 +16,11 @@ import {DetailViewMovieComponent} from './components/presentational/detail-view-
 import {EditMovieComponent} from './components/container/edit-movie/edit-movie.component';
 import {TranslateModule} from "@ngx-translate/core";
 import {LaddaModule} from "angular2-ladda";
+import {SelectChipsComponent} from './components/presentational/select-chips/select-chips.component';
 
 
 @NgModule({
-  declarations: [MoviesComponent, MovieListComponent, MovieFormComponent, GenreChipsComponent, AddNewMovieComponent, DetailMovieComponent, DetailViewMovieComponent, EditMovieComponent],
+  declarations: [MoviesComponent, MovieListComponent, MovieFormComponent, GenreChipsComponent, AddNewMovieComponent, DetailMovieComponent, DetailViewMovieComponent, EditMovieComponent, SelectChipsComponent],
   imports: [
     MoviesRoutingModule,
     CommonModule,

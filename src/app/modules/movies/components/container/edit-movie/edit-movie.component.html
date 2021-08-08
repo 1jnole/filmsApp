@@ -2,6 +2,7 @@
   <app-movie-form [movie]="movie"
                   [isUpdateMode]="true"
                   [isLoading]="!!(isMovieToEditLoading$ | async)"
+                  [isUpdatingMovieLoading]="!!(isUpdatingMovieLoading$ | async)"
                   (updateCurrentMovie)="updateMovie($event)">
   </app-movie-form>
 </ng-container>

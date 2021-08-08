@@ -18,7 +18,8 @@ import {hasActionsExecuting} from "@ngxs-labs/actions-executing";
 export class EditMovieComponent implements OnInit, OnDestroy {
 
   @Select(MovieState.getMovieToViewState) movieToEdit$!: Observable<MovieInterface>
-  @Select(hasActionsExecuting([GetMovieByIdAction])) isMovieToEditLoading$!: Observable<boolean>
+  @Select(hasActionsExecuting([GetMovieByIdAction, UpdateMovieAction])) isMovieToEditLoading$!: Observable<boolean>
+  @Select(hasActionsExecuting([UpdateMovieAction])) isUpdatingMovieLoading$!: Observable<boolean>
 
   private ngUnsubscribe = new Subject();
   movieId: number = 0;

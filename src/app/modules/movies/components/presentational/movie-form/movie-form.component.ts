@@ -5,6 +5,9 @@ import {MovieEntity} from "../../../../../model/entities/movie/movie.entity";
 import {SwalService} from "../../../../../services/swal.service";
 import {COMPANIES} from "../../../../../model/constants/companies";
 import {StudioInterface} from "../../../../../model/interfaces/movie/studio.interface";
+import {ACTORS} from "../../../../../model/constants/actors";
+import {ActorsInterface} from "../../../../../model/interfaces/movie/actors.interface";
+import {SelectModeEnum} from "../../../../../model/enums/movie/select-mode.enum";
 
 @Component({
   selector: 'app-movie-form',
@@ -14,6 +17,7 @@ import {StudioInterface} from "../../../../../model/interfaces/movie/studio.inte
 export class MovieFormComponent implements OnChanges {
 
   @Input() isLoading!: boolean;
+  @Input() isUpdatingMovieLoading!: boolean;
   @Input() movie!: MovieInterface;
   @Input() isUpdateMode!: boolean;
 
@@ -22,20 +26,22 @@ export class MovieFormComponent implements OnChanges {
 
   form: FormGroup;
   companies: StudioInterface[];
-  regex =  /(http)?s?:?(\/\/[^"']*\.(?:png|jpg|jpeg|gif|png|svg))/g
+  availableActors: ActorsInterface[];
+  regex = /(http)?s?:?(\/\/[^"']*\.(?:png|jpg|jpeg|gif|png|svg))/g
 
   constructor(private swalService: SwalService) {
     this.form = new FormGroup({
       title: new FormControl('', Validators.required),
       poster: new FormControl('', [Validators.required]),
       genre: new FormControl([], Validators.required),
-      actors: new FormControl('',),
+      actors: new FormControl([],),
       company: new FormControl(''),
       year: new FormControl(''),
       duration: new FormControl(''),
       imdbRating: new FormControl(''),
     });
     this.companies = COMPANIES;
+    this.availableActors = ACTORS;
   }
 
   createMovie() {
@@ -46,6 +52,10 @@ export class MovieFormComponent implements OnChanges {
     this.updateCurrentMovie.emit(new MovieEntity(
       {id: this.movie.id, ...this.form.getRawValue()}
     ))
+  }
+
+  updateOpt(element: { item: string, mode: SelectModeEnum }) {
+    //TODO set actor list (availableActors) to state management to avoid mutability and weak solutions
   }
 
   setDataToForm(movie: MovieEntity) {

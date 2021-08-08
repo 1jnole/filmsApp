@@ -18,18 +18,17 @@ export class GenreChipsComponent implements ControlValueAccessor {
 
   disabled = false;
   touched = false;
-  genres: string[] = [];
-  genre: string = '';
+  elements: string[] = [];
 
-  onChange = (genre: string[]) => {
+  onChange = (element: string[]) => {
   };
   onTouched = () => {
   };
 
   addElement(event: any) {
     if (event.target.value) {
-      this.genres.push(event.target.value as string);
-      this.onChange(this.genres);
+      this.elements.push(event.target.value as string);
+      this.onChange(this.elements);
       this.onTouched();
       event.target.value = null;
     }
@@ -44,15 +43,15 @@ export class GenreChipsComponent implements ControlValueAccessor {
   }
 
   writeValue(obj: string []): void {
-    this.genres = JSON.parse(JSON.stringify(obj));
+    this.elements = obj ? JSON.parse(JSON.stringify(obj)) : [];
   }
 
   trackByFn(index: number): number {
     return index;
   }
 
-  removeElement(genre: string): void {
-    this.onChange(ArrayMethods.removeItem(this.genres, genre));
+  removeElement(element: string): void {
+    this.onChange(ArrayMethods.removeItem(this.elements, element));
     this.onTouched();
   }
 
